@@ -4,20 +4,17 @@
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device, inital-scale=1">
 
-    <title>{% block title %}DjangoDersleri{% endblock %}</title>
+    <title>{% block title %}BitirmeProjem{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 
 
-    {# Css Dosyası Eklemek için #}
-    {#    <link rel="stylesheet" href="{% static 'style.css' %}">#}
 </head>
 
-<body style="margin-top: 70px;" >
+<body style="margin-top: 70px;">
 
 {% include 'header.html' %}
-{#{% include 'messages.html' %}#}
-{# Resim Dosyası Eklemek için #}
-{#<img src="{% static 'resim.jpg' %}"><br>#}
+{% include 'messages.html' %}
+
 {% block body %}
 
 {% endblock %}

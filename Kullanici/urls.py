@@ -6,8 +6,6 @@ app_name = 'kullanici'
 urlpatterns = [
     path('', kullanici_home_view, name='home'),
     path('index/', kullanici_index, name='index'),
-
-    # path('register/', register_view, name='register'),
-    # path('logout/', logout_view, name='logout'),
+    path('create/', kullanici_create, name='create'),
 
 ]
