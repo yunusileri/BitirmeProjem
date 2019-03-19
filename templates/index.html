@@ -9,21 +9,21 @@
             <tr>
                 <th>#</th>
                 <th>Kullanıcı Adı</th>
-                <th>Parola</th>
-                <th>Ad</th>
+                 <th>Ad</th>
                 <th>Soyad</th>
                 <th>Mail</th>
+                <th>Parola</th>
             </tr>
             </thead>
             <tbody>
-            {% for  kullanici in kullanicilar %}
+            {% for  user in users %}
                 <tr>
                     <td>{{ forloop.counter }}</td>
-                    <td>{{ kullanici.kullaniciAdi }}</td>
-                    <td>{{ kullanici.Parola }} </td>
-                    <td>{{ kullanici.isim }}   </td>
-                    <td>{{ kullanici.soyisim }}</td>
-                    <td>{{ kullanici.eMail }}  </td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.first_name }}   </td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.email }}  </td>
+                <td>{{ user.password }} </td>
                 </tr>
 
             {% endfor %}

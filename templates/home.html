@@ -7,7 +7,8 @@
 
 {% block body %}
     <div class="container-fluid">
- <h3>Hoşgeldiniz Burası Ana Sayfa</h3>
+    <h3>Hoşgeldin {{ request.user.get_full_name }}</h3> <br>
+    <h3> Burası Ana Sayfa</h3>
 
         </div>
 
