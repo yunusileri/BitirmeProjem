@@ -18,7 +18,7 @@ def create_accounts(request):
         password = form.cleaned_data.get('password1')
         user.set_password(password)
         user.save()
-        new_user = authenticate(request, username=user.username, password=user.password)
+        new_user = authenticate(request, username=user.username, password=password)
         login(request, new_user)
         return redirect('accounts:home')
     return render(request, 'createForm.html', {'forms': form, 'title': 'Uye Ol'})
@@ -40,7 +40,6 @@ def SignIn(request):
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password')
         user = authenticate(request, username=username, password=password)
-        login(request,user)
+        login(request, user)
         return redirect('accounts:home')
     return render(request, 'createForm.html', {'forms': form, 'title': 'Giriş Yap'})
-
