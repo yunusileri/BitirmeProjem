@@ -1,6 +1,6 @@
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
+from django.contrib.auth import login, logout
 from django.shortcuts import render, redirect
+
 from .forms import *
 
 
@@ -26,6 +26,7 @@ def create_accounts(request):
 
 def list_accounts(request):
     users = User.objects.all()
+    # users = User.objects.all()
     return render(request, 'index.html', {'users': users})
 
 
