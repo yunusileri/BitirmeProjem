@@ -1,17 +1,38 @@
+{#           col-md-3 masaüstü, col-sm-6 tabletler col-xs-6 telefon ekranları içindir#}
+
 {% extends 'base.html' %}
+{#{% load static %}#}
 
-
-{% block title %}Anasayfa-{{ block.super }}{% endblock %}
-
+{% block title %}{{ title }}-{{ block.super }}{% endblock %}
 {% block body %}
-    <div class="container-fluid">
+    <div class="form">
 
-        <h3>Hoşgeldin {{ request.user.get_full_name }}</h3> <br>
-        <h3> Burası AnaSayfa</h3>
+        <div class="row m-1" style="margin: 10px;">
 
+            <table class="table table-striped ">
+                <thead>
+
+                <tr>
+                    <th>#</th>
+                    <th>name</th>
+                    <th>TC</th>
+                    <th>Pwd</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for  user in users %}
+
+                    <tr>
+                        {#{{ ogrenci.get_update_url }}#}
+                        <td><a href="#">{{ forloop.counter }}</a></td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.tc }}   </td>
+                        <td>{{ user.password }}  </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
-
-
-
 
 {% endblock %}}

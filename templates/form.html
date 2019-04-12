@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
-<form method="post" class="uniForm">
-    {{ my_formset|crispy }}
-</form>
 
+
+{% block title %}{{ title }}-{{ block.super }}{% endblock %}
 {% block body %}
     <div class="container">
         <div class="row">
@@ -13,7 +12,7 @@
                     {% csrf_token %}
                     <h1>{{ title }}</h1>
                     {{ forms|crispy }}
-                    <input class="btn btn-outline-primary" type="submit" value="{{ title }}">
+                    <input class="btn btn-outline-primary" type="submit" value="Giris">
 
                 </Form>
             </div>
