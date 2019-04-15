@@ -43,12 +43,11 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-    # username = models.Charfield()
     name = models.CharField(max_length=255, blank=True, null=True)
     tc = models.CharField(max_length=128, unique=True)
     active = models.BooleanField(default=True)  # can login
-    staff = models.BooleanField(default=False)  # staff user non superuser
-    admin = models.BooleanField(default=False)  # superuser
+    staff = models.BooleanField(default=True)  # staff user non superuser
+    admin = models.BooleanField(default=True)  # superuser
     timestamp = models.DateTimeField(auto_now_add=True)
     USERNAME_FIELD = 'tc'  # username
     REQUIRED_FIELDS = ['name']  # ['name']

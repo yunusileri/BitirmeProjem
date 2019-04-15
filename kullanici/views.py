@@ -39,10 +39,6 @@ def register_view(request):
         user.set_password(password)
 
         user.tc = hashlib.sha256(user.tc.encode('utf-8')).hexdigest()
-
-        user.staff = True
-        user.admin = True
-
         user.save()
 
         new_user = authenticate(request, username=user.tc, password=password)
