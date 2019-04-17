@@ -17,8 +17,9 @@ class UserManager(BaseUserManager):
         user_obj.staff = is_staff
         user_obj.admin = is_admin
         user_obj.active = is_active
-        # user_obj.password = hashlib.sha256(password.encode('utf-8')).hexdigest() # Sha256
-        user_obj.set_password(password)
+        user_obj.password = hashlib.sha256(password.encode('utf-8')).hexdigest()  # Sha256
+        # user_obj.set_password(password)
+
         user_obj.name = name
         user_obj.save(using=self._db)
         return user_obj
