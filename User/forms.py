@@ -7,6 +7,8 @@ from .models import User
 """
 
 """
+
+
 class LoginForm(forms.Form):
     tc = forms.CharField(max_length=11, min_length=11)
     password = forms.CharField(max_length=100, widget=forms.PasswordInput, label='Parola')

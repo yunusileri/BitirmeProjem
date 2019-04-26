@@ -2,18 +2,22 @@ import hashlib
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 
-
 from .forms import LoginForm, RegisterForm
 from .models import User
 
 
 def home_view(request):
-    users = User.object.all()
-    context = {'users': users, 'title': 'Anasayfa'}
+    users = User.object.all()  # bütün user objeleri çekilir.
+    context = {'users': users, 'title': 'Anasayfa'}  # user objeleri html sayfasına parametre olarak gönderilir.
     return render(request, 'home.html', context=context)
 
 
 def login_view(request):
+    """
+        login sayfasından alınan kullanıcı adı bilgisi sha-256 ile hashlenerek,
+        parola ise djangonun varsayılan olarak kullandığı pkbfdk2(tam ad) algoritmalarını kullanılarak hashlenir ve
+        authenticate fonksiyonuna parametre olarak gönderilir ve geçerli kullanıcı varsa kullanıcı grişi sağlanır.
+    """
     form = LoginForm(request.POST or None)
     if form.is_valid():
         username = form.cleaned_data.get('tc')
@@ -26,10 +30,13 @@ def login_view(request):
 
 
 def register_view(request):
+    """
+        tckimlik numarsası sha-256 ile hashlenerek parola ise djangonun setpassword fonksiyonunu kullanarak
+        hashlenerek veritabanına kayıt edilir.
+    """
     form = RegisterForm(request.POST or None)
     if form.is_valid():
         user = form.save(commit=False)
-        # username = user.tc
         password = form.cleaned_data.get('password1')
         user.set_password(password)
 
@@ -44,5 +51,6 @@ def register_view(request):
 
 
 def logout_view(request):
+    # çıkış işleminin gerçekleştirildiği komut satırlarıdır.
     logout(request)
     return redirect('users:home')
