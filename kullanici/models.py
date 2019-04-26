@@ -10,16 +10,13 @@ class UserManager(BaseUserManager):
         if not password:
             raise ValueError('Gecerli bir parola adresi giriniz!')
         user_obj = self.model(
-            # tc=self.normalize_email(tc)
             tc=hashlib.sha256(tc.encode('utf-8')).hexdigest()
 
         )
         user_obj.staff = is_staff
         user_obj.admin = is_admin
         user_obj.active = is_active
-        user_obj.password = hashlib.sha256(password.encode('utf-8')).hexdigest()  # Sha256
-        # user_obj.set_password(password)
-
+        user_obj.set_password(password)
         user_obj.name = name
         user_obj.save(using=self._db)
         return user_obj
@@ -79,7 +76,3 @@ class User(AbstractBaseUser):
     @property
     def is_active(self):
         return self.active
-
-#
-# class Profile(models.Model):
-#     user = models.OneToOneField(User)
