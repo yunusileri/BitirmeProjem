@@ -2,9 +2,11 @@ import hashlib
 from django import forms
 from django.contrib.auth import authenticate
 
-from kullanici.models import User
+from .models import User
 
+"""
 
+"""
 class LoginForm(forms.Form):
     tc = forms.CharField(max_length=11, min_length=11)
     password = forms.CharField(max_length=100, widget=forms.PasswordInput, label='Parola')
@@ -29,7 +31,7 @@ class RegisterForm(forms.ModelForm):
         model = User
         fields = [
             'tc',
-            'name',
+            'isim',
             'password1',
             'password2',
         ]

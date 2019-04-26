@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
         <lu class="nav-item navbar-left ">
-            <a href="{% url 'kullanici:home' %}">
+            <a href="{% url 'users:home' %}">
                 <img src="{% static 'logo.png' %}" width="50px;">
             </a>
         </lu>
@@ -20,23 +20,23 @@
 
             {% if not request.user.is_authenticated %}
                 <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'kullanici:register' %}"> Yeni Kayıt <span
+                    <a class="nav-link" href="{% url 'users:register' %}"> Yeni Kayıt <span
                             class="sr-only">(current)</span></a>
                 </li>
 
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'kullanici:login' %}"> Giriş <span
+                    <a class="nav-link" href="{% url 'users:login' %}"> Giriş <span
                             class="sr-only">(current)</span></a>
                 </li>
             {% else %}
                 <nav class="navbar navbar-light bg-light">
 
-                         {{ request.user.name }}
+                         {{ request.user.isim }}
 
                 </nav>
                 <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'kullanici:logout' %}"> Çıkış <span
+                    <a class="nav-link" href="{% url 'users:logout' %}"> Çıkış <span
                             class="sr-only">(current)</span></a>
                 </li>
             {% endif %}
